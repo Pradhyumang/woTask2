@@ -1,0 +1,129 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+  /* font-family: system-ui; */
+}
+.btnRed{
+  background-color: rgb(156, 16, 16);
+}
+.btnGreen{
+  background-color: green;
+}
+.btnBlue{
+  background-color: rgb(5, 120, 197);
+}
+.txtRed{
+  color: red;
+}
+
+.headerForm{
+    color: white;
+    background-color: rgb(5, 120, 197);
+    padding: 1%;
+    /* border-radius: 5px; */
+}
+h4{
+    text-align: center;
+    font-size: 25px;
+}
+.formDiv{
+    border: 1px solid rgb(5, 120, 197);
+    margin: 0px 50px 50px 50px;
+    border-radius: 5px;
+   
+}
+/* form{
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    justify-items: center;
+}
+input{
+    
+} */
+form{
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+}
+.formContainer{
+    margin: 10px;
+   overflow-y: auto;
+}
+
+
+input[type=button] ,button{
+    /* background-color: rgb(5, 120, 197); */
+    color: white;
+   
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 35px;
+    width: 75px;
+  }
+
+  input[type=text],input[type=date],input[type=email],input[type=number]{
+    padding: 4px 8px;
+    width: 100%;
+    /* margin: 0px 0px 0px 7%; */
+    /* font-size: 20px; */
+  }
+  input[type=checkbox]{
+    margin: 0px 0px 0px 0%;
+  }
+ 
+  /* div.divGender:first-child{
+    margin: 0% 1% 0% 0%;
+  } */
+  .divName,.divDate,.divEmail,.divMob,.divGender,.divHobbie,.btn{
+    display:  grid;
+    grid-template-columns: 2fr 10fr;
+    align-items: baseline;
+    gap: 0px 2%;
+  }
+  label{
+    display: flex;
+    justify-content: end;
+    font-weight: bold;
+  }
+  .checkBoxes label{
+    display: inline-block;
+    font-weight: normal;
+  }
+  .divGender label{
+  display: inline-flex;
+   }
+   .divGender div label{
+  font-weight: normal;
+   }
+
+/* css for dispaly basic */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.tdBtn ,.allBtns{
+  display: flex;
+  gap: 1rem;
+}
+
+
+#errName,#errMob,#errEmail,#errDate,.dispNone{
+ display: none;  
+}
+#resetBtn{
+  background-color: rgb(156, 16, 16);
+}
