@@ -105,9 +105,6 @@ export default class Main {
                   
       btns.forEach(btn=>{btn.style.display='none';})
         submitBtn.style.display='inline';
-      // console.log(this.lastClickElementID,'id in update form data');
-      // btn.removeEventListener('click', updateFormHandler);
-      // console.log('update form data inside');
       if (this.flag) {
               this.flag=false;
               setTimeout(()=>{
@@ -115,18 +112,12 @@ export default class Main {
               },0)
 
               let data = this.insertForm.getFormData();
-              if (data !== undefined&&this.lastClickElementID!= null) {
-                // console.log(this.lastClickElementID);
-                // console.log(this.lastClickElementID);
+              if (data !== undefined&&this.lastClickElementID!= null) {  
                 this.storage.updateData(this.lastClickElementID, data);
-                
-                // this.displayTable();
-                // this.deleteClick();
                 alert('Data Updated');
                       document.getElementById('form').reset();
               }
-                  // this.insertForm.reset();
-                  
+                 
                   this.displayTable();
                   this.updateBtnClick();
                   this.deleteClick();
@@ -140,18 +131,12 @@ export default class Main {
 // Move the window.onload code outside the class definition
 window.onload = function () {
   const main = new Main();
-  //  on submit btn click 
-  main.submitBtnClick();
-  // for delete 
-  main.deleteClick();
-  //for edit
-  main.updateBtnClick();
-  //  main.storage.getOneData(3);
-  // main.insertForm.onNameChange();
-  
-  // setTimeout(()=>{
-  //   console.log(main.lastClickElementID);
 
-  // },3000)
+  main.submitBtnClick();
+ 
+  main.deleteClick();
+ 
+  main.updateBtnClick();
+  
 };
 
