@@ -9,9 +9,9 @@ export default class Main {
    
     this.storage = new Storage();
     this.insertForm = new InsertForm();
-    this.display = new Display(this.storage.getDataAll());
+    this.display = new Display(this.storage.getDataAll());//
     this.lastClickElementID = null;
-    this.flag=true;
+    // this.flag=true;
     
     
   }
@@ -41,10 +41,10 @@ export default class Main {
   }
 
   submitBtnClick() {
-    let btn = document.getElementById('submitBtn');
+    const btn = document.getElementById('submitBtn');
     const submitHandler = () => {
       // btn.removeEventListener('click', submitHandler);
-      let data = this.insertForm.getFormData();
+      const data = this.insertForm.getFormData();
       if (data !== undefined) {
         //  console.log(data,'in main');
         this.storage.setStorage(data);
@@ -99,19 +99,19 @@ export default class Main {
   }
 
   updateFormData() {
-    let btn = document.getElementById('updateBtn');
+    const btn = document.getElementById('updateBtn');
     const updateFormHandler = () => {
-      let btns=document.querySelectorAll('.dispNone');
+      const btns=document.querySelectorAll('.dispNone');
                   
       btns.forEach(btn=>{btn.style.display='none';})
         submitBtn.style.display='inline';
-      if (this.flag) {
-              this.flag=false;
-              setTimeout(()=>{
-                this.flag=true
-              },0)
+      // if (this.flag) {
+      //         this.flag=false;
+      //         setTimeout(()=>{
+      //           this.flag=true
+      //         },0)
 
-              let data = this.insertForm.getFormData();
+              const data = this.insertForm.getFormData();
               if (data !== undefined&&this.lastClickElementID!= null) {  
                 this.storage.updateData(this.lastClickElementID, data);
                 alert('Data Updated');
@@ -121,7 +121,7 @@ export default class Main {
                   this.displayTable();
                   this.updateBtnClick();
                   this.deleteClick();
-      }     
+      // }     
     };
 
     btn.addEventListener('click', updateFormHandler);

@@ -1,9 +1,9 @@
 
 export default class Display {
     constructor(data) {
-    this.datas=data;
-    this.displayTable(this.datas);
+    this.displayTable(data);
     }
+    
     displayTable(data)
     {
         const displayTable=document.getElementById('displayTable');

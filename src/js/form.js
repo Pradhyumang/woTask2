@@ -10,78 +10,83 @@ export default class insertForm
 
     
     validationName(nameOrignal)
-    {
-      
-        if (/^[a-zA-Z0-9]{4,20}$/.test(nameOrignal)) 
-        {
-           let err=document.getElementById('errName');
+    { 
+       if (nameOrignal.length>0) {
+        if (/^[a-zA-Z0-9\s]{4,20}$/.test(nameOrignal)) 
+        {  const err=document.getElementById('errName');
              err.style.display='none';
         return nameOrignal;
-       }
-       else{
-        let err=document.getElementById('errName');
+        }else{
+        const err=document.getElementById('errName');
         err.style.display='inline';
        }
+             }
+        
     }
     validationEmail(emailOrignal){
-      if (/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-zA-Z][a-zA-Z0-9]{0,}$/.test(emailOrignal)) 
+      if (emailOrignal.length>0) {
+        if (/^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,}$/.test(emailOrignal)) 
         {
-           let err=document.getElementById('errEmail');
+           const err=document.getElementById('errEmail');
              err.style.display='none';
         return emailOrignal;
        }
        else{
-        let err=document.getElementById('errEmail');
+        const err=document.getElementById('errEmail');
         err.style.display='inline';
        }
-
-    }
-    validationDate(givenDate){
-      const currentDate = new Date();
-      const dateOrignal=new Date(givenDate);
-      // console.log(dateOrignal);
-     
-            if((dateOrignal.getTime()&&dateOrignal.getTime() <= currentDate.getTime()))
-            {
-              let err=document.getElementById('errDate');
-                err.style.display='none';
-            return givenDate;
-          }
-          else if((dateOrignal.getTime()&&dateOrignal.getTime() >= currentDate.getTime())){
-            let err=document.getElementById('errDate');
-            err.style.display='inline';
-              alert('You Can Not Born in Future'); 
-          }
-          else{
-            let err=document.getElementById('errDate');
-            err.style.display='inline';
-          }
+      }
       
     }
+    validationDate(givenDate){
+      if (givenDate.length>0) {
+        const currentDate = new Date();
+        const dateOrignal=new Date(givenDate);
+        // console.log(dateOrignal);
+       
+              if((dateOrignal.getTime()&&dateOrignal.getTime() <= currentDate.getTime()))
+              {
+                const err=document.getElementById('errDate');
+                  err.style.display='none';
+              return givenDate;
+            }
+            else if((dateOrignal.getTime()&&dateOrignal.getTime() >= currentDate.getTime())){
+              const err=document.getElementById('errDate');
+              err.style.display='inline';
+                alert('You Can Not Born in Future'); 
+            }
+            else{
+              const err=document.getElementById('errDate');
+              err.style.display='inline';
+            }
+      }  
+    }
     validationMobile(phoneNoOrignal){
-        let len= phoneNoOrignal.length;
-        if(len==10)
+     
+        const len= phoneNoOrignal.length;
+         if(len==0){
+          const err=document.getElementById('errMob');
+           err.style.display='none';
+         return '';
+          }
+          else if(/^[6789]\d{9}$/.test(phoneNoOrignal))
         {
-             let err=document.getElementById('errMob');
+             const err=document.getElementById('errMob');
                err.style.display='none';
           return phoneNoOrignal;
          }
-         else if(len==0){
-              let err=document.getElementById('errMob');
-               err.style.display='none';
-          return '';
-         }
+         
          else{
-          let err=document.getElementById('errMob');
+          const err=document.getElementById('errMob');
           err.style.display='inline';
-          // alert('number must be of 10 digits');
+          
          }
+      
+        
     }
     validateFormData(data){
-      // if (data.checkName!=undefined&&data.checkGender!=undefined&&data.checkDate!=undefined&&
-      //     data.checkEmail!=undefined&&data.checkMob!=undefined&&data.checkHobbies!=undefined) {
-        if (data.checkName && data.checkGender && data.checkDate
-           && data.checkEmail && data.checkMob && data.checkHobbies) {
+        if (data.checkName && data.checkGender && data.checkDate 
+           && data.checkEmail  && data.checkHobbies && data.checkMob) {
             
         const validData={
           empName:data.checkName,
@@ -91,12 +96,8 @@ export default class insertForm
           empMob:data.checkMob,
           empHobbies:data.checkHobbies
          }
-        //  console.log("form data is valid");
          return validData;
       }
-    //   else{
-    //     console.log('Form Data is invalid');
-    //   }
      }
 
      onNameChange(){
@@ -110,11 +111,12 @@ export default class insertForm
       inputElement.addEventListener('input', () => {
         this.validationDate(inputElement.value)
       });
+      
     }
     onMobChange(){
       const inputElement = document.getElementById('txtMob');
       inputElement.addEventListener('input', () => {
-        this.validationMobile(inputElement.value)
+          this.validationMobile(inputElement.value)   
       });
     }
     onEmailChange(){
@@ -125,16 +127,17 @@ export default class insertForm
     }
     getFormData()
     {
-       let nameOrignal= document.getElementById('txtName').value.trim();
-                let name=this.validationName(nameOrignal);          
-       let gender= document.querySelector('input[name="gender"]:checked').value.trim();
-       let dateOrignal=document.getElementById('txtDate').value.trim();
-                let date= this.validationDate(dateOrignal);
-       let emailOrignal=document.getElementById('txtEmail').value.trim();
-                let email=this.validationEmail(emailOrignal);
-       let phoneNoOrignal=document.getElementById('txtMob').value.trim();
-                let phoneNo= this.validationMobile(phoneNoOrignal);
-       let hobbies= []; 
+       const nameOrignal= document.getElementById('txtName').value.trim();
+                const name=this.validationName(nameOrignal);          
+       const gender= document.querySelector('input[name="gender"]:checked').value.trim();
+       const dateOrignal=document.getElementById('txtDate').value.trim();
+                const date= this.validationDate(dateOrignal);
+       const emailOrignal=document.getElementById('txtEmail').value.trim();
+                const email=this.validationEmail(emailOrignal);
+       const phoneNoOrignal=document.getElementById('txtMob').value.trim();
+                const phoneNo= this.validationMobile(phoneNoOrignal);
+                // console.log(phoneNo);
+       const hobbies= []; 
        document.querySelectorAll('input[name="hobbies"]:checked').forEach(check=>{
         hobbies.push(check.value);
        });
@@ -155,13 +158,13 @@ export default class insertForm
     }
 
     reset(){
-      let submitBtn=document.getElementById('submitBtn');
+      const submitBtn=document.getElementById('submitBtn');
           submitBtn.style.display='none';
-          let btns=document.querySelectorAll('.dispNone');
+          const btns=document.querySelectorAll('.dispNone');
           btns.forEach(btn=>{
             btn.style.display='inline';
           });
-          let resetBtn=document.getElementById('resetBtn');
+          const resetBtn=document.getElementById('resetBtn');
           resetBtn.addEventListener('click',()=>{
             if (this.flag) {
               this.flag=false;

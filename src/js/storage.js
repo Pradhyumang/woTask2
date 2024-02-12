@@ -53,6 +53,7 @@ export default class storage{
            let arr=[];
            arr.push({id:1,...data});
            this.setData(arr);
+           alert('Insert SuccesFull');
        }
        else{
         // console.log("inside ELse");
