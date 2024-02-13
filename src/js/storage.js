@@ -12,29 +12,21 @@ export default class storage{
         return allData;
     }
     getOneData(id){
-        // console.log(id,'inside storage');
         let data=this.getDataAll();
         const userIdIndex=data.findIndex(dt=>dt.id==id);
-        // console.log(userIdIndex);
        if (userIdIndex!=-1) {
             const record=data[userIdIndex];
-        //    console.log('id',record);
            return record;
        }
-        // return true;
-       
     }
     deleteData(id){
-        //  console.log(id);
         let cnf=confirm('Are You Sure to Delete');
         if (cnf) {
             let data=this.getDataAll();
             const userIdIndex=data.findIndex(dt=>dt.id==id);
-            //  console.log(userIdIndex);
             if (userIdIndex!=-1) {
                 data.splice(userIdIndex,1);
             this.setData(data);
-                // console.log("data delete successfull");
             }
             return true
         }
@@ -61,6 +53,7 @@ export default class storage{
          let index=this.idCounter(arr.length);
          arr.push({id:index,...data});
          this.setData(arr);
+         return true
        }
        //end of storge
     }
@@ -78,6 +71,7 @@ export default class storage{
         //  console.log(userIdIndex);
         if (userIdIndex!=-1) {
             data.splice(userIdIndex,1,{id:idUser,...updateInfo});
+            
            this.setData(data);
             // console.log("data delete successfull");
         }

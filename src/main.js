@@ -11,7 +11,7 @@ export default class Main {
     this.insertForm = new InsertForm();
     this.display = new Display(this.storage.getDataAll());//
     this.lastClickElementID = null;
-    // this.flag=true;
+    this.flagUpadate=true;
     
     
   }
@@ -31,9 +31,11 @@ export default class Main {
         this.displayTable();
         this.deleteClick();
         this.updateBtnClick();
-        // console.log('delete');
+        const btns=document.querySelectorAll('.dispNone');
+        const submitBtn=document.getElementById('submitBtn');
+          btns.forEach(btn=>{btn.style.display='none';})
+          submitBtn.style.display='inline';
         document.getElementById('form').reset();
-        this.insertForm.reset();
       };
 
       element.addEventListener('click', deleteHandler);
@@ -45,9 +47,11 @@ export default class Main {
     const submitHandler = () => {
       // btn.removeEventListener('click', submitHandler);
       const data = this.insertForm.getFormData();
-      if (data !== undefined) {
-        //  console.log(data,'in main');
-        this.storage.setStorage(data);
+      if (data) {
+        if(this.storage.setStorage(data))
+        {
+          alert('submit SuccessFull');
+        }
         this.displayTable();
         this.deleteClick();
         this.updateBtnClick();
@@ -58,8 +62,10 @@ export default class Main {
   }
 //Edit ?BTN
   updateBtnClick() {
+
     document.querySelectorAll('.btnGreen').forEach(element => {
       const updateHandler = () => {
+        
         // element.removeEventListener('click', updateHandler);
         //for buttons of update and reset in form
         this.insertForm.reset();
@@ -97,31 +103,48 @@ export default class Main {
       
     });
   }
-
+//update button
   updateFormData() {
     const btn = document.getElementById('updateBtn');
+   
     const updateFormHandler = () => {
-      const btns=document.querySelectorAll('.dispNone');
-                  
-      btns.forEach(btn=>{btn.style.display='none';})
-        submitBtn.style.display='inline';
-      // if (this.flag) {
-      //         this.flag=false;
-      //         setTimeout(()=>{
-      //           this.flag=true
-      //         },0)
+      // console.log('update btn click');
 
               const data = this.insertForm.getFormData();
-              if (data !== undefined&&this.lastClickElementID!= null) {  
-                this.storage.updateData(this.lastClickElementID, data);
-                alert('Data Updated');
-                      document.getElementById('form').reset();
+              //&&this.lastClickElementID!= null
+              if (this.flagUpadate) {
+                this.flagUpadate=false;
+                setTimeout(()=>{
+                  this.flagUpadate=true;
+                },0) 
+                if (data) {  
+
+                  if(this.storage.updateData(this.lastClickElementID, data)){
+                    this.insertForm.ShowSubmit(); 
+                    alert('Data Updated');
+                     this.displayTable();
+                     this.updateBtnClick();
+                     this.deleteClick()
+                    document.getElementById('form').reset();
+                  }
+                  
+                  
+                }else
+                {
+                  
+                  // document.getElementById('form').reset();
+                    this.displayTable();
+                    this.updateBtnClick();
+                    this.deleteClick()
+                    this.insertForm.ShowUpdate();
+                    // this.insertForm.ShowSubmit(); 
+                  // console.log('hide Submit');
+                }
               }
-                 
-                  this.displayTable();
-                  this.updateBtnClick();
-                  this.deleteClick();
-      // }     
+              
+              // this.displayTable();
+              // this.updateBtnClick();
+              // this.deleteClick();  
     };
 
     btn.addEventListener('click', updateFormHandler);

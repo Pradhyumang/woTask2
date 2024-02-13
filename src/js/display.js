@@ -24,6 +24,13 @@ export default class Display {
                  </tr>`;
                 });
         }
+        if(data==null || data.length==0){
+            const displayDiv=document.getElementsByClassName('display');
+            displayDiv[0].style.display='none';
+        }else{
+            const displayDiv=document.getElementsByClassName('display');
+            displayDiv[0].style.display='block';
+        }
     }
 
 }

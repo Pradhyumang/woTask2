@@ -11,7 +11,7 @@ export default class insertForm
     
     validationName(nameOrignal)
     { 
-       if (nameOrignal.length>0) {
+      // if (nameOrignal.length>=0) {
         if (/^[a-zA-Z0-9\s]{4,20}$/.test(nameOrignal)) 
         {  const err=document.getElementById('errName');
              err.style.display='none';
@@ -20,11 +20,10 @@ export default class insertForm
         const err=document.getElementById('errName');
         err.style.display='inline';
        }
-             }
-        
+      // }    
     }
     validationEmail(emailOrignal){
-      if (emailOrignal.length>0) {
+      // if (emailOrignal.length>0) {
         if (/^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,}$/.test(emailOrignal)) 
         {
            const err=document.getElementById('errEmail');
@@ -35,15 +34,12 @@ export default class insertForm
         const err=document.getElementById('errEmail');
         err.style.display='inline';
        }
-      }
-      
+      // } 
     }
     validationDate(givenDate){
-      if (givenDate.length>0) {
-        const currentDate = new Date();
+    //  if (givenDate.length>0) {
+      const currentDate = new Date();
         const dateOrignal=new Date(givenDate);
-        // console.log(dateOrignal);
-       
               if((dateOrignal.getTime()&&dateOrignal.getTime() <= currentDate.getTime()))
               {
                 const err=document.getElementById('errDate');
@@ -59,7 +55,7 @@ export default class insertForm
               const err=document.getElementById('errDate');
               err.style.display='inline';
             }
-      }  
+    //  } 
     }
     validationMobile(phoneNoOrignal){
      
@@ -67,7 +63,7 @@ export default class insertForm
          if(len==0){
           const err=document.getElementById('errMob');
            err.style.display='none';
-         return '';
+         return 'empty';
           }
           else if(/^[6789]\d{9}$/.test(phoneNoOrignal))
         {
@@ -85,9 +81,11 @@ export default class insertForm
         
     }
     validateFormData(data){
-        if (data.checkName && data.checkGender && data.checkDate 
-           && data.checkEmail  && data.checkHobbies && data.checkMob) {
-            
+      if (data.checkName && data.checkGender && data.checkDate 
+        && data.checkEmail  && data.checkHobbies && data.checkMob) {
+            if (data.checkMob=='empty') {
+              data.checkMob='';
+            }
         const validData={
           empName:data.checkName,
           empGender:data.checkGender,
@@ -100,29 +98,29 @@ export default class insertForm
       }
      }
 
-     onNameChange(){
+    onNameChange(){
       const inputElement = document.getElementById('txtName');
       inputElement.addEventListener('input', () => {
-        this.validationName(inputElement.value)
+        this.validationName(inputElement.value.trim())
       });
     }
     onDateChange(){
       const inputElement = document.getElementById('txtDate');
       inputElement.addEventListener('input', () => {
-        this.validationDate(inputElement.value)
+        this.validationDate(inputElement.value.trim())
       });
       
     }
     onMobChange(){
       const inputElement = document.getElementById('txtMob');
       inputElement.addEventListener('input', () => {
-          this.validationMobile(inputElement.value)   
+          this.validationMobile(inputElement.value.trim())   
       });
     }
     onEmailChange(){
       const inputElement = document.getElementById('txtEmail');
       inputElement.addEventListener('input', () => {
-        this.validationEmail(inputElement.value)
+        this.validationEmail(inputElement.value.trim())
       });
     }
     getFormData()
@@ -136,7 +134,6 @@ export default class insertForm
                 const email=this.validationEmail(emailOrignal);
        const phoneNoOrignal=document.getElementById('txtMob').value.trim();
                 const phoneNo= this.validationMobile(phoneNoOrignal);
-                // console.log(phoneNo);
        const hobbies= []; 
        document.querySelectorAll('input[name="hobbies"]:checked').forEach(check=>{
         hobbies.push(check.value);
@@ -160,11 +157,11 @@ export default class insertForm
     reset(){
       const submitBtn=document.getElementById('submitBtn');
           submitBtn.style.display='none';
-          const btns=document.querySelectorAll('.dispNone');
+      const btns=document.querySelectorAll('.dispNone');
           btns.forEach(btn=>{
             btn.style.display='inline';
           });
-          const resetBtn=document.getElementById('resetBtn');
+      const resetBtn=document.getElementById('resetBtn');
           resetBtn.addEventListener('click',()=>{
             if (this.flag) {
               this.flag=false;
@@ -181,13 +178,28 @@ export default class insertForm
               
           })
           
-          document.querySelectorAll('.btnRed').forEach(deleteBtn => {
-            deleteBtn.addEventListener('click',()=>{
-              btns.forEach(btn=>{btn.style.display='none';})
-                submitBtn.style.display='inline';
-                
-            })
-          })
-          
+    }
+    ShowSubmit(){
+      setTimeout(()=> {
+        
+        const updatebtn=document.getElementById('updateBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const resetBtn=document.getElementById('resetBtn');
+        updatebtn.style.display=''
+        resetBtn.style.display=''
+        submitBtn.style.display='inline-block'; 
+       
+      }, 0);
+    }
+    ShowUpdate(){
+      setTimeout(()=> {
+     
+      const updatebtn=document.getElementById('updateBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const resetBtn=document.getElementById('resetBtn');
+      updatebtn.style.display='inline'
+      resetBtn.style.display='inline'
+      submitBtn.style.display='none'; 
+    }, 0);
     }
 }
