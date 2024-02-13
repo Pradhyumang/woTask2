@@ -1,7 +1,6 @@
 
 export default class Display {
-    constructor(data) {
-    this.displayTable(data);
+    constructor() {
     }
     
     displayTable(data)

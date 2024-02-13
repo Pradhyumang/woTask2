@@ -11,7 +11,6 @@ export default class insertForm
     
     validationName(nameOrignal)
     { 
-      // if (nameOrignal.length>=0) {
         if (/^[a-zA-Z0-9\s]{4,20}$/.test(nameOrignal)) 
         {  const err=document.getElementById('errName');
              err.style.display='none';
@@ -19,11 +18,9 @@ export default class insertForm
         }else{
         const err=document.getElementById('errName');
         err.style.display='inline';
-       }
-      // }    
+       }  
     }
     validationEmail(emailOrignal){
-      // if (emailOrignal.length>0) {
         if (/^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,}$/.test(emailOrignal)) 
         {
            const err=document.getElementById('errEmail');
@@ -34,10 +31,8 @@ export default class insertForm
         const err=document.getElementById('errEmail');
         err.style.display='inline';
        }
-      // } 
     }
     validationDate(givenDate){
-    //  if (givenDate.length>0) {
       const currentDate = new Date();
         const dateOrignal=new Date(givenDate);
               if((dateOrignal.getTime()&&dateOrignal.getTime() <= currentDate.getTime()))
@@ -55,10 +50,8 @@ export default class insertForm
               const err=document.getElementById('errDate');
               err.style.display='inline';
             }
-    //  } 
     }
     validationMobile(phoneNoOrignal){
-     
         const len= phoneNoOrignal.length;
          if(len==0){
           const err=document.getElementById('errMob');
@@ -71,14 +64,10 @@ export default class insertForm
                err.style.display='none';
           return phoneNoOrignal;
          }
-         
          else{
           const err=document.getElementById('errMob');
           err.style.display='inline';
-          
          }
-      
-        
     }
     validateFormData(data){
       if (data.checkName && data.checkGender && data.checkDate 
@@ -97,7 +86,6 @@ export default class insertForm
          return validData;
       }
      }
-
     onNameChange(){
       const inputElement = document.getElementById('txtName');
       inputElement.addEventListener('input', () => {
@@ -138,7 +126,6 @@ export default class insertForm
        document.querySelectorAll('input[name="hobbies"]:checked').forEach(check=>{
         hobbies.push(check.value);
        });
-     
        const checkData={
         checkName:name,
         checkGender:gender,
@@ -151,9 +138,7 @@ export default class insertForm
        if(validData){
         return validData
       }
-      
     }
-
     reset(){
       const submitBtn=document.getElementById('submitBtn');
           submitBtn.style.display='none';
@@ -174,26 +159,20 @@ export default class insertForm
                     document.getElementById('form').reset();
                   }
             }
-           
-              
           })
-          
     }
     ShowSubmit(){
       setTimeout(()=> {
-        
         const updatebtn=document.getElementById('updateBtn');
         const submitBtn = document.getElementById('submitBtn');
         const resetBtn=document.getElementById('resetBtn');
         updatebtn.style.display=''
         resetBtn.style.display=''
         submitBtn.style.display='inline-block'; 
-       
       }, 0);
     }
     ShowUpdate(){
       setTimeout(()=> {
-     
       const updatebtn=document.getElementById('updateBtn');
       const submitBtn = document.getElementById('submitBtn');
       const resetBtn=document.getElementById('resetBtn');
