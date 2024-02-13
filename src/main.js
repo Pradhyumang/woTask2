@@ -111,6 +111,14 @@ export default class Main {
       // console.log('update btn click');
 
               const data = this.insertForm.getFormData();
+              if (!data) {
+                const errName=document.getElementById('errName');
+                errName.style.display='none';
+                const errEmail=document.getElementById('errEmail');
+                errEmail.style.display='none';
+                const errDate=document.getElementById('errDate');
+                errDate.style.display='none';
+              }
               //&&this.lastClickElementID!= null
               if (this.flagUpadate) {
                 this.flagUpadate=false;
