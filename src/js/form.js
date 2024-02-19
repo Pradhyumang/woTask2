@@ -113,7 +113,7 @@ export default class insertForm
     }
     getFormData()
     {
-       const nameOrignal= document.getElementById('txtName').value.trim();
+       const nameOrignal= document.getElementById('txtName')?.value?.trim() || '';
                 const name=this.validationName(nameOrignal);          
        const gender= document.querySelector('input[name="gender"]:checked').value.trim();
        const dateOrignal=document.getElementById('txtDate').value.trim();
@@ -134,11 +134,17 @@ export default class insertForm
         checkMob:phoneNo,
         checkHobbies:hobbies
        }
-      const validData= this.validateFormData(checkData);
+       const validData= this.validateFormData(checkData);
+       console.log(validData);
        if(validData){
         return validData
       }
     }
+
+    // getValueFromElement(elementID) {
+    //   return document.getElementById(elementID).value.trim();
+    // }
+
     reset(){
       const submitBtn=document.getElementById('submitBtn');
           submitBtn.style.display='none';
@@ -181,4 +187,14 @@ export default class insertForm
       submitBtn.style.display='none'; 
     }, 0);
     }
+    commonFunc(isDisplay){
+      setTimeout(()=> {
+      const updatebtn=document.getElementById('updateBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const resetBtn=document.getElementById('resetBtn');
+      updatebtn.style.display= isDisplay ? 'inline' : 'none'
+      resetBtn.style.display= isDisplay ? 'inline' : 'none'
+      submitBtn.style.display= isDisplay ? 'inline-block' : 'none'
+    }, 0);
+  }
 }

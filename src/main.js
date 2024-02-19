@@ -47,7 +47,6 @@ export default class Main {
   }
 //Edit ?BTN
   updateBtnClick() {
-
     document.querySelectorAll('.btnGreen').forEach(element => {
       const updateHandler = () => {
         this.insertForm.reset();
