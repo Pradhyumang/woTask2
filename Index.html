@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,116 +11,162 @@
 </head>
 
 <body>
-<div>
-  <!-- form for insert -->
-  <h4>Employee</h4>
-  <div class="formDiv">
-     <div class="headerForm">
-      Add Employee
-     </div>
-     <div class="formContainer">
-      <form  method="post" class="" action="#" id="form"> 
-        <div class="divName">
-          <label for="txtName">Name:<span class="txtRed">*</span></label>
-          <input type="text" id="txtName" class="" placeholder="Enter Name" minlength="4" maxlength="20" required><br>
-          <span class="txtRed" id="errName">Name field should be between 4 to 20 characters,and AlphaNumeric values</span>
-        </div>
-        
-        <div class="divGender">
-           <!-- gender -->
-          <label for="">Gender:<span class="txtRed">*</span></label>
-          <div>
-            <input type="radio" id="txtMale" name="gender" class="" value="Male" checked>
-            <label for="txtMale">Male</label>
-            <input type="radio" id="txtFemale" name="gender" class="" value="Female">
-            <label for="txtFemale">Female</label>
-          </div>
-        </div><br>
-        
-       <div class="divDate">
-        <label for="txtDate">Date of birth:<span class="txtRed">*</span></label>
-        <input type="date" id="txtDate" class="" onfocus="showPicker()"><br>
-        <span class="txtRed" id="errDate">Date Of Birth is Required and Future Date are not allowed</span>
-       </div>
-  
-       <div class="divEmail">
-        <label for="txtEmail">Email:<span class="txtRed">*</span></label>
-        <input type="email" id="txtEmail" class="" placeholder="Enter Email"><br>
-        <span class="txtRed" id="errEmail">Enter a valid email </span>
-       </div>
-  
-       <div class="divMob">
-        <label for="txtMob">Phone:</label>
-        <input type="number" id="txtMob" class="" placeholder="Enter Phone " max="10"><br>
-        <span class="txtRed" id="errMob">Phone field exact 10 digits.and Must start with 6-7-8-9 </span>
-       </div>
-       
-        <!-- hobiies -->
-        <div class="divHobbie">
-            <label for="">Hobbies:</label>
-          
-        <div class="checkBoxes">
-          <input type="checkbox" id="Cricket" class="" value="Cricket" name="hobbies"> 
-          <label for="Cricket">Cricket</label><br>
-          
-          <input type="checkbox" id="Chess" class="" value="Chess" name="hobbies">
-          <label for="Chess">Chess</label><br>
-          
-          <input type="checkbox" id="Music" class="" value="Music" name="hobbies"> 
-          <label for="Music">Music</label><br>
-        </div>
-          
-        </div><br>
-
-        <div class="btn"> 
-          <span></span>
-          <div class="allBtns">
-
-            <input type="button" value="Submit" class="btnBlue" id="submitBtn"><br>
-            <input type="button" value="Update" class="btnGreen dispNone" id="updateBtn"><br>
-            <button type="button" class=" dispNone" id="resetBtn">Reset</button><br>
-          </div>
-
-        </div>
-       </form>
-     </div>
-    </div>
-    <span></span>
-  <!-- display the data  -->
-  <div class="display">
-     <h4 class="basic">Basic</h4>
-     <div class="formDiv">
+  <div>
+    <!-- form for insert -->
+    <h4>Employee</h4>
+    <div class="formDiv">
       <div class="headerForm">
-      Display
+        Add Employee
       </div>
       <div class="formContainer">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Gender</th>
-              <th>DOB</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Hobbies</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+        <form method="post" class="" action="#" id="form">
+          <div class="divName">
+            <label for="txtName">Name:<span class="txtRed">*</span></label>
+            <input type="text" id="txtName" class="" placeholder="Enter Name" minlength="4" maxlength="20" required><br>
+            <span class="txtRed" id="errName">Name field should be between 4 to 20 characters,and AlphaNumeric
+              values</span>
+          </div>
 
+          <div class="divGender">
+            <!-- gender -->
+            <label for="">Gender:<span class="txtRed">*</span></label>
+            <div>
+              <input type="radio" id="txtMale" name="gender" class="" value="Male" checked>
+              <label for="txtMale">Male</label>
+              <input type="radio" id="txtFemale" name="gender" class="" value="Female">
+              <label for="txtFemale">Female</label>
+            </div>
+          </div><br>
 
-          <tbody id="displayTable">
-            
-          </tbody>
-         
-          
-        </table>
+          <div class="divDate">
+            <label for="txtDate">Date of birth:<span class="txtRed">*</span></label>
+            <input type="date" id="txtDate" class="" onfocus="showPicker()"><br>
+            <span class="txtRed" id="errDate">Date Of Birth is Required and Future Date are not allowed</span>
+          </div>
+
+          <div class="divEmail">
+            <label for="txtEmail">Email:<span class="txtRed">*</span></label>
+            <input type="email" id="txtEmail" class="" placeholder="Enter Email"><br>
+            <span class="txtRed" id="errEmail">Enter a valid email </span>
+          </div>
+
+          <div class="divMob">
+            <label for="txtMob">Phone:</label>
+            <input type="number" id="txtMob" class="" placeholder="Enter Phone " max="10"><br>
+            <span class="txtRed" id="errMob">Phone field exact 10 digits.and Must start with 6-7-8-9 </span>
+          </div>
+
+          <!-- hobiies -->
+          <div class="divHobbie">
+            <label for="">Hobbies:</label>
+
+            <div class="checkBoxes">
+              <input type="checkbox" id="Cricket" class="" value="Cricket" name="hobbies">
+              <label for="Cricket">Cricket</label><br>
+
+              <input type="checkbox" id="Chess" class="" value="Chess" name="hobbies">
+              <label for="Chess">Chess</label><br>
+
+              <input type="checkbox" id="Music" class="" value="Music" name="hobbies">
+              <label for="Music">Music</label><br>
+            </div>
+
+          </div><br>
+
+          <div class="btn">
+            <span></span>
+            <div class="allBtns">
+
+              <input type="button" value="Submit" class="btnBlue" id="submitBtn"><br>
+              <input type="button" value="Update" class="btnGreen dispNone" id="updateBtn"><br>
+              <button type="button" class=" dispNone" id="resetBtn">Reset</button><br>
+            </div>
+
+          </div>
+        </form>
       </div>
-  </div>
-  <div>&nbsp</div>
-</div>
+    </div>
+    <span></span>
+    <!-- display the data  -->
+    <div class="display">
+      <h4 class="basic">Basic</h4>
+      <div class="formDiv">
+        <div class="headerForm">
+          Display
+        </div>
+        <div class="formContainer">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Hobbies</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
 
-  <script src='./src/main.js' type="module"></script>
+            <tbody id="displayTable">
+
+            </tbody>
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- display in advance -->
+    <div class="display">
+      <h4 class="basic">Advance</h4>
+      <div class="formDiv">
+        <div class="headerForm">
+          Display
+        </div>
+        <div class="formContainer">
+          <table>
+            <tbody id="advanceDiv">
+              <tr><th>Name</th><td>pradhyuman</td></tr>
+              <tr><th>Gender</th> <td>Male</td></tr>
+              <tr><th>DOB</th><td>2024-02-15</td></tr>
+              <tr><th>Email</th><td>prad@gmail.com</td></tr>
+              <tr><th>Phone</th><td>8999954321</td></tr>
+              <tr><th>Hobbies</th><td>Cricket,Chess,Music</td></tr>
+              <tr><th>Action</th><td class="tdBtn">
+                  <button class="btnGreen editBtn" id="1">EDIT</button>
+                  <button class="btnRed" id="1">DELETE</button>
+                </td>
+              </tr>
+            </tbody>
+
+
+            <!-- <tbody id="displayTableAdvance">
+            <tbody id="displayTable">
+              <td>
+                <td>pradhyuman</td>
+                <td>Male</td>
+                <td>2024-02-15</td>
+                <td>prad@gmail.com</td>
+                <td>8999954321</td>
+                <td>Cricket,Chess,Music</td>
+                <td class="tdBtn">
+                  <button class="btnGreen editBtn" id="1">EDIT</button>
+                  <button class="btnRed" id="1">DELETE</button>
+                </td>
+              </td>
+              
+            </tbody>
+            </tbody> -->
+
+
+          </table>
+        </div>
+      </div>
+      <div>&nbsp</div>
+    </div>
+    <script src='./src/main.js' type="module"></script>
 </body>
 
 </html>

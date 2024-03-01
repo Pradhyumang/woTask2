@@ -8,23 +8,24 @@ export default class Main {
     this.insertForm = new InsertForm();
     this.display = new Display();//
     this.lastClickElementID = null;
-    this.flagUpadate=true;
-    this.display.displayTable(this.storage.getDataAll());
+    this.flagUpadate = true;
+    this.displayTable()
   }
   displayTable() {
     this.display.displayTable(this.storage.getDataAll());
+    this.display.displayAdvanceTable(this.storage.getDataAll());
   }
   deleteClick() {
-    document.querySelectorAll('.btnRed').forEach(element => { 
+    document.querySelectorAll('.btnRed').forEach(element => {
       const deleteHandler = () => {
         this.storage.deleteData(element.id);
         this.displayTable();
         this.deleteClick();
         this.updateBtnClick();
-        const btns=document.querySelectorAll('.dispNone');
-        const submitBtn=document.getElementById('submitBtn');
-          btns.forEach(btn=>{btn.style.display='none';})
-          submitBtn.style.display='inline';
+        const btns = document.querySelectorAll('.dispNone');
+        const submitBtn = document.getElementById('submitBtn');
+        btns.forEach(btn => { btn.style.display = 'none'; })
+        submitBtn.style.display = 'inline';
         document.getElementById('form').reset();
       };
       element.addEventListener('click', deleteHandler);
@@ -35,8 +36,7 @@ export default class Main {
     const submitHandler = () => {
       const data = this.insertForm.getFormData();
       if (data) {
-        if(this.storage.setStorage(data))
-        {     alert('submit SuccessFull');        }
+        if (this.storage.setStorage(data)) { alert('submit SuccessFull'); }
         this.displayTable();
         this.deleteClick();
         this.updateBtnClick();
@@ -45,7 +45,7 @@ export default class Main {
     };
     btn.addEventListener('click', submitHandler);
   }
-//Edit ?BTN
+  //Edit ?BTN
   updateBtnClick() {
     document.querySelectorAll('.btnGreen').forEach(element => {
       const updateHandler = () => {
@@ -68,47 +68,46 @@ export default class Main {
             document.querySelector(`input[value="${check}"]`).checked = true;
           });
           this.updateFormData();
-        } 
+        }
       };
       element.addEventListener('click', updateHandler);
     });
   }
-//update button
+  //update button
   updateFormData() {
     const btn = document.getElementById('updateBtn');
     const updateFormHandler = () => {
-              const data = this.insertForm.getFormData();
-              if (!data) {
-                const errName=document.getElementById('errName');
-                errName.style.display='none';
-                const errEmail=document.getElementById('errEmail');
-                errEmail.style.display='none';
-                const errDate=document.getElementById('errDate');
-                errDate.style.display='none';
-              }
-              if (this.flagUpadate) {
-                this.flagUpadate=false;
-                setTimeout(()=>{
-                  this.flagUpadate=true;
-                },0) 
-                if (data) {  
-                  if(this.storage.updateData(this.lastClickElementID, data)){
-                    this.insertForm.ShowSubmit(); 
-                    alert('Data Updated');
-                     this.displayTable();
-                     this.updateBtnClick();
-                     this.deleteClick()
-                    document.getElementById('form').reset();
-                  } 
-                }
-                else
-                {
-                    this.displayTable();
-                    this.updateBtnClick();
-                    this.deleteClick()
-                    this.insertForm.ShowUpdate();
-                }
-              }  
+      const data = this.insertForm.getFormData();
+      if (!data) {
+        const errName = document.getElementById('errName');
+        errName.style.display = 'none';
+        const errEmail = document.getElementById('errEmail');
+        errEmail.style.display = 'none';
+        const errDate = document.getElementById('errDate');
+        errDate.style.display = 'none';
+      }
+      if (this.flagUpadate) {
+        this.flagUpadate = false;
+        setTimeout(() => {
+          this.flagUpadate = true;
+        }, 0)
+        if (data) {
+          if (this.storage.updateData(this.lastClickElementID, data)) {
+            this.insertForm.ShowSubmit();
+            alert('Data Updated');
+            this.displayTable();
+            this.updateBtnClick();
+            this.deleteClick()
+            document.getElementById('form').reset();
+          }
+        }
+        else {
+          this.displayTable();
+          this.updateBtnClick();
+          this.deleteClick()
+          this.insertForm.ShowUpdate();
+        }
+      }
     };
     btn.addEventListener('click', updateFormHandler);
   }
