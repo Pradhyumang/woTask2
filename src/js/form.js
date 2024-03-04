@@ -49,7 +49,7 @@ export default class insertForm {
   }
   validationMobile(phoneNoOrignal) {
     const len = phoneNoOrignal.length;
-    if (len == 0) {
+    if (len === 0) {
       const err = document.getElementById('errMob');
       err.style.display = 'none';
       return;
@@ -185,14 +185,14 @@ export default class insertForm {
       submitBtn.style.display = 'none';
     }, 0);
   }
-  commonFunc(isDisplay) {
-    setTimeout(() => {
-      const updatebtn = document.getElementById('updateBtn');
-      const submitBtn = document.getElementById('submitBtn');
-      const resetBtn = document.getElementById('resetBtn');
-      updatebtn.style.display = isDisplay ? 'inline' : 'none'
-      resetBtn.style.display = isDisplay ? 'inline' : 'none'
-      submitBtn.style.display = isDisplay ? 'inline-block' : 'none'
-    }, 0);
-  }
+  // commonFunc(isDisplay) {
+  //   setTimeout(() => {
+  //     const updatebtn = document.getElementById('updateBtn');
+  //     const submitBtn = document.getElementById('submitBtn');
+  //     const resetBtn = document.getElementById('resetBtn');
+  //     updatebtn.style.display = isDisplay ? 'inline' : 'none'
+  //     resetBtn.style.display = isDisplay ? 'inline' : 'none'
+  //     submitBtn.style.display = isDisplay ? 'inline-block' : 'none'
+  //   }, 0);
+  // }
 }
