@@ -22,13 +22,8 @@ export default class Display {
                  </tr>`;
             });
         }
-        if (!data || data.length === 0) {
-            const displayDiv = document.getElementsByClassName('display');
-            displayDiv[0].style.display = 'none';
-        } else {
-            const displayDiv = document.getElementsByClassName('display');
-            displayDiv[0].style.display = 'block';
-        }
+        const displayDiv = document.getElementsByClassName('display');
+        (data && data.length > 0) ? displayDiv[0].style.display = 'block' : displayDiv[0].style.display = 'none';
     }
 
     displayAdvanceTable(data) {
@@ -69,19 +64,15 @@ export default class Display {
                 td.appendChild(deleteBtn)
                 tdOut.appendChild(td)
                 trs[cnt].appendChild(tdOut)
-            }); cnt = 0
+            });
 
         }
-        if (data === null || data.length === 0) {
-            const displayDiv = document.getElementsByClassName('display');
-            displayDiv[1].style.display = 'none';
-        } else {
-            const displayDiv = document.getElementsByClassName('display');
-            displayDiv[1].style.display = 'block';
-        }
+        const displayDiv = document.getElementsByClassName('display');
+        (data && data.length > 0) ? displayDiv[1].style.display = 'block' : displayDiv[1].style.display = 'none';
+
     }
-    setTd(setData, element, cnt) {
-        const tag = document.querySelectorAll(element)[cnt];
+    setTd(setData, elementQuery, cnt) {
+        const tag = document.querySelectorAll(elementQuery)[cnt];
         const td = document.createElement('td');
         td.textContent = setData;
         tag.appendChild(td);

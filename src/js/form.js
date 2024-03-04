@@ -133,15 +133,9 @@ export default class insertForm {
       const validData = this.validateFormData(checkData);
       if (validData) { return validData }
     }
-    //  else {
-    //   alert('check The Mobile Number')
-    // }
-    // console.log(validData);
+
   }
 
-  // getValueFromElement(elementID) {
-  //   return document.getElementById(elementID).value.trim();
-  // }
 
   reset() {
     const submitBtn = document.getElementById('submitBtn');
@@ -160,39 +154,23 @@ export default class insertForm {
         if (confirm('Sure to Reset')) {
           btns.forEach(btn => { btn.style.display = 'none'; })
           submitBtn.style.display = 'inline';
+          const formHeading = document.querySelector('.formDiv .headerForm');
+          formHeading.textContent = 'Add Employee';
           document.getElementById('form').reset();
         }
       }
     })
   }
-  ShowSubmit() {
-    setTimeout(() => {
-      const updatebtn = document.getElementById('updateBtn');
-      const submitBtn = document.getElementById('submitBtn');
-      const resetBtn = document.getElementById('resetBtn');
-      updatebtn.style.display = ''
-      resetBtn.style.display = ''
-      submitBtn.style.display = 'inline-block';
-    }, 0);
+  showSubmit() {
+    document.getElementById('updateBtn').style.display = '';
+    document.getElementById('resetBtn').style.display = '';
+    document.getElementById('submitBtn').style.display = 'inline-block';;
+
   }
-  ShowUpdate() {
-    setTimeout(() => {
-      const updatebtn = document.getElementById('updateBtn');
-      const submitBtn = document.getElementById('submitBtn');
-      const resetBtn = document.getElementById('resetBtn');
-      updatebtn.style.display = 'inline'
-      resetBtn.style.display = 'inline'
-      submitBtn.style.display = 'none';
-    }, 0);
+  showUpdate() {
+    document.getElementById('updateBtn').style.display = 'inline';
+    document.getElementById('resetBtn').style.display = 'inline';
+    document.getElementById('submitBtn').style.display = 'none';
   }
-  // commonFunc(isDisplay) {
-  //   setTimeout(() => {
-  //     const updatebtn = document.getElementById('updateBtn');
-  //     const submitBtn = document.getElementById('submitBtn');
-  //     const resetBtn = document.getElementById('resetBtn');
-  //     updatebtn.style.display = isDisplay ? 'inline' : 'none'
-  //     resetBtn.style.display = isDisplay ? 'inline' : 'none'
-  //     submitBtn.style.display = isDisplay ? 'inline-block' : 'none'
-  //   }, 0);
-  // }
+
 }

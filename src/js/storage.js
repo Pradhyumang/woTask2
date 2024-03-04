@@ -13,17 +13,17 @@ export default class storage {
     getOneData(id) {
         let data = this.getDataAll();
         const userIdIndex = data.findIndex(dt => dt.id == id);
-        if (userIdIndex != -1) {
+        if (userIdIndex !== -1) {
             const record = data[userIdIndex];
             return record;
         }
     }
     deleteData(id) {
-        let cnf = confirm('Are You Sure to Delete');
+        let cnf = confirm('Are You Sure to Delete ?');
         if (cnf) {
             let data = this.getDataAll();
             const userIdIndex = data.findIndex(dt => dt.id == id);
-            if (userIdIndex != -1) {
+            if (userIdIndex !== -1) {
                 data.splice(userIdIndex, 1);
                 this.setData(data);
             }
@@ -34,7 +34,7 @@ export default class storage {
 
     }
 
-    setStorage(data) {
+    insertData(data) {
         //  for storing data in local storage 
 
         const dataAll = this.getDataAll();
@@ -42,7 +42,7 @@ export default class storage {
             let arr = [];
             arr.push({ id: 1, ...data });
             this.setData(arr);
-            alert('Insert SuccesFull');
+            alert('Submit SuccesFull');
         }
         else {
             let arr = dataAll;
@@ -61,7 +61,7 @@ export default class storage {
     updateData(idUser, updateInfo) {
         let data = this.getDataAll();
         const userIdIndex = data.findIndex(dt => dt.id == idUser);
-        if (userIdIndex != -1) {
+        if (userIdIndex !== -1) {
             data.splice(userIdIndex, 1, { id: idUser, ...updateInfo });
             this.setData(data);
         }

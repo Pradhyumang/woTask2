@@ -10,6 +10,12 @@ export default class Main {
     this.lastClickElementID = null;
     this.flagUpadate = true;
     this.displayTable()
+
+    window.addEventListener('storage', () => {
+      this.displayTable();
+      this.deleteClick();
+      this.updateBtnClick();
+    });
   }
   displayTable() {
     this.display.displayTable(this.storage.getDataAll());
@@ -36,7 +42,7 @@ export default class Main {
     const submitHandler = () => {
       const data = this.insertForm.getFormData();
       if (data) {
-        if (this.storage.setStorage(data)) { alert('submit SuccessFull'); }
+        if (this.storage.insertData(data)) { alert('Submit SuccessFull'); }
         this.displayTable();
         this.deleteClick();
         this.updateBtnClick();
@@ -68,6 +74,8 @@ export default class Main {
             document.querySelector(`input[value="${check}"]`).checked = true;
           });
           this.updateFormData();
+          const formHeading = document.querySelector('.formDiv .headerForm');
+          formHeading.textContent = 'Update Employee';
         }
       };
       element.addEventListener('click', updateHandler);
@@ -93,11 +101,13 @@ export default class Main {
         }, 0)
         if (data) {
           if (this.storage.updateData(this.lastClickElementID, data)) {
-            this.insertForm.ShowSubmit();
+            this.insertForm.showSubmit();
             alert('Data Updated');
             this.displayTable();
             this.updateBtnClick();
             this.deleteClick()
+            const formHeading = document.querySelector('.formDiv .headerForm');
+            formHeading.textContent = 'Add Employee';
             document.getElementById('form').reset();
           }
         }
@@ -105,7 +115,7 @@ export default class Main {
           this.displayTable();
           this.updateBtnClick();
           this.deleteClick()
-          this.insertForm.ShowUpdate();
+          this.insertForm.showUpdate();
         }
       }
     };
@@ -119,5 +129,7 @@ window.onload = function () {
   main.submitBtnClick();
   main.deleteClick();
   main.updateBtnClick();
+
 };
+
 
